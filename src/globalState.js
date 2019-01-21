@@ -5,7 +5,7 @@ function Campaign(data = {}) {
     {
       title: '',
       investigators: [],
-      scenario: null,
+      scenario: 'The Gathering',
       completed: [],
       log: [],
       chaosBag: []
