@@ -53,7 +53,11 @@ class Campaign extends Component {
           />
         )}
         {this.state.scenario !== null && (
-          <Scenario name={this.state.scenario} />
+          <Scenario
+            name={this.state.scenario}
+            log={this.state.log}
+            investigators={this.state.investigators}
+          />
         )}
       </div>
     );

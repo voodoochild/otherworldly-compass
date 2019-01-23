@@ -3,26 +3,42 @@ import ReactMarkdown from 'react-markdown';
 
 import scenarios from '../data/scenarios';
 import strings from '../data/strings';
+import ResolutionForm from '../components/ResolutionForm';
 
 class Scenario extends Component {
   state = {
-    name: this.props.name,
     data: scenarios[this.props.name],
     strings: strings[this.props.name]
   };
 
   intro() {
+    if (!this.state.data.intro) {
+      return;
+    }
+
+    const _intro = this.state.data.intro(this.props);
+    const introTxt = _intro.reduce(
+      (acc, id) => (acc += `\n\r${this.state.strings[id]}`),
+      ''
+    );
+
     return (
       <div className="intro">
-        <ReactMarkdown source={this.state.strings.intro} />
+        <ReactMarkdown source={introTxt} />
       </div>
     );
   }
 
   setup() {
+    if (!this.state.data.setup) {
+      return;
+    }
+
+    const _setup = this.state.data.setup(this.props);
+
     return (
       <ol className="setup">
-        {this.state.data.setup.map((id, i) => (
+        {_setup.map((id, i) => (
           <li key={`setup_${i}`}>
             <ReactMarkdown
               source={this.state.strings[id]}
@@ -36,19 +52,30 @@ class Scenario extends Component {
   }
 
   resolutions() {
+    if (!this.state.data.resolutions) {
+      return;
+    }
+
     return (
       <div className="resolutions">
         {this.state.data.resolutions.map((res, i) => {
+          const _res = res(this.props);
+
           return (
             <div key={`resolution_${i}`}>
-              <ReactMarkdown source={this.state.strings[res[0]]} />
-              {res.slice(1).map((outcome, j) => (
+              <ReactMarkdown source={this.state.strings[_res[0]]} />
+              {_res.slice(1).map((outcome, j) => (
                 <li key={`resolution_${i}_outcome_${j}`}>
-                  <ReactMarkdown
-                    source={this.state.strings[outcome]}
-                    disallowedTypes={['paragraph']}
-                    unwrapDisallowed={true}
-                  />
+                  {typeof outcome === 'string' && (
+                    <ReactMarkdown
+                      source={this.state.strings[outcome]}
+                      disallowedTypes={['paragraph']}
+                      unwrapDisallowed={true}
+                    />
+                  )}
+                  {typeof outcome === 'object' && outcome.form && (
+                    <ResolutionForm form={outcome.form} />
+                  )}
                 </li>
               ))}
             </div>
@@ -60,12 +87,12 @@ class Scenario extends Component {
 
   render() {
     if (!this.state.data) {
-      return <div>Scenario '{this.state.name}' not found</div>;
+      return <div>Scenario '{this.props.name}' not found</div>;
     }
 
     return (
       <div className="scenario">
-        <h2>{this.state.name}</h2>
+        <h2>{this.props.name}</h2>
         {this.intro()}
         <h3>Setup</h3>
         {this.setup()}

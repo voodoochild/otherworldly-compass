@@ -3,10 +3,10 @@ import * as keys from './keys';
 export default {
   [keys.THE_GATHERING]: {
     intro: `*You and your partners have been investigating strange events taking place in your home city of Arkham, Massachusetts. Over the past few weeks, several townspeople have mysteriously gone missing. Recently, their corpses turned up in the woods, savaged and half-eaten. The police and newspapers have stated that wild animals are responsible, but you believe there is something else going on. You are gathered together at the lead investigator’s home to discuss these bizarre events.*`,
-    setup__1: `Gather all cards from the following encounter sets: *The Gathering*, *Rats*, *Ghouls*, *Striking Fear*, *Ancient Evils*, and *Chilling Cold.*`,
-    setup__2: `Put the Study location into play. Set each other location aside, out of play. Each investigator begins play in the Study`,
-    setup__3: `Set the Ghoul Priest and Lita Chantler cards aside, out of play.`,
-    setup__4: `Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck.`,
+    setup_1: `Gather all cards from the following encounter sets: *The Gathering*, *Rats*, *Ghouls*, *Striking Fear*, *Ancient Evils*, and *Chilling Cold.*`,
+    setup_2: `Put the Study location into play. Set each other location aside, out of play. Each investigator begins play in the Study`,
+    setup_3: `Set the Ghoul Priest and Lita Chantler cards aside, out of play.`,
+    setup_4: `Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck.`,
     no_resolution__intro: `**If no resolution was reached (each investigator resigned or was defeated):** *You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown.*`,
     no_resolution__outcome_1: `*Your house is still standing.*`,
     no_resolution__outcome_2: `*The Ghoul Priest is still alive.*`,
@@ -27,5 +27,33 @@ export default {
     resolution_3__outcome_3: `*The Ghoul Priest is still alive.*`,
     resolution_3__outcome_4: `Each investigator who has not resigned is **killed**. If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, advance to the next scenario. (Each player whose investigator has been killed must choose a new investigator from the pool of available investigators. Refer to page 13 of the Rules Reference for the full rules on killed investigators.)`,
     resolution_3__outcome_5: `If the lead investigator was **killed**, choose an investigator to earn the Lita Chantler card. That investigator may include this card in his or her deck. It does not count toward that investigator’s deck size.`
+  },
+
+  [keys.THE_MIDNIGHT_MASKS]: {
+    intro_1: `*The woman came to you in a panic, raving about monsters emerging from the ground in a home near Rivertown. “I managed to trap them,” she explains, “but there are others. Other pits. Other domains.” Only last week, you would have thought she was a lunatic. Recent events, however, have challenged your preconceptions of normality. You decide to hear her out.*\n\r*She introduces herself as Lita Chantler and lays out a tale that strains the limits of your belief. “The creatures I speak of ,” she claims, “are called ghouls—cruel beings who plague the crypts, caverns, and tunnels beneath the city of Arkham…”*`,
+    intro_2: `*In the wake of the disaster at your home, Lita Chantler, the red-haired woman from your parlor, lays out a tale that—even in light of what you have just witnessed—strains the limits of your belief. “The creatures in your home,” she claims, “are called ghouls—cruel beings who plague the crypts, caverns, and tunnels beneath the city of Arkham…”*`,
+    intro_3: `*“These creatures feed on the corpses of humans, and they are served by a dark cult within Arkham whose members have inexplicably come to worship the ancient master of the ghouls. This cult has been killing innocent people and feeding them to the ghouls, satiating a monstrous hunger. A dark balance was maintained. Until now. Recently,” Lita continues, “one of their lairs, where the corpses were stored, was destroyed. Since then, the ghouls have been more active than usual. I have tracked their movements and tried my best to stop them from running amok throughout the city. But I think there is something worse going on. The cult has been planning something darker, and more ominous, than anything I have yet observed. Indications are that this plan shall come to fruition tonight, shortly after midnight. Beyond that, I cannot fathom what to expect.*\n\r*“Many of the cultists,” Lita continues, “will seem like everyday people, despite their foul intentions. Whenever the cult meets, its members don masks shaped like the skulls of various animals to protect their identities from one another. These masks are our mark. Symbols of death and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours. The more cultists we find before midnight, the better.”*`,
+    setup_1: `Gather all cards from the following encounter sets: *The Midnight Masks*, *Chilling Cold*, *Nightgaunts*, *Dark Cult*, and *Locked Doors*.`,
+    setup_2: `Set the *Cult of Umôrdhoth* encounter set aside as a separate “Cultist deck,” and shuffle it.`,
+    setup_3: `Choose one of the two Downtown locations and one of the two Southside locations at random and put them into play. Remove the other versions of Downtown and Southside from the game. Then, put the Northside, Easttown, Rivertown, St. Mary’s Hospital, Graveyard, Miskatonic University, and Your House locations into play.`,
+    setup_4__2_players: `Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside.`,
+    setup_4__3_players: `Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown.`,
+    setup_4__4_players: `Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.`,
+    setup_5: `Remove Your House from the game. Each investigator begins play at Rivertown.`,
+    setup_6: `Each investigator begins play at Your House.`,
+    setup_7: `Shuffle the remainder of the encounter cards to form the encounter deck.`,
+    setup_8: `Shuffle the Ghoul Priest into the encounter deck.`,
+    no_resolution__intro: `**If no resolution was reached (each investigator resigned or was defeated):** Read **Resolution 1**.`,
+    resolution_1__intro: `**Resolution 1:** *You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.*`,
+    resolution_1__outcome_1: `Under “Cultists We Interrogated,” record the names of each unique ***Cultist*** enemy in the victory display.`,
+    resolution_1__outcome_2: `Under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” here as well.`,
+    resolution_1__outcome_3: `If the Ghoul Priest is in the victory display, cross out *“the Ghoul Priest is still alive”*.`,
+    resolution_1__outcome_4: `Each investigator earns experience equal to the Victory X value of each card in the victory display.`,
+    resolution_2__intro: `**Resolution 2:** *Twelve bells ring out, signaling midnight. You’re out of time; the cult’s ritual will begin shortly. You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.*`,
+    resolution_2__outcome_1: `Under “Cultists We Interrogated,” record the names of each unique ***Cultist*** enemy in the victory display.`,
+    resolution_2__outcome_2: `Under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.`,
+    resolution_2__outcome_3: `*It is past midnight.*`,
+    resolution_2__outcome_4: `If the Ghoul Priest is in the victory display, cross out *“the Ghoul Priest is still alive”*.`,
+    resolution_2__outcome_5: `Each investigator earns experience equal to the Victory X value of each card in the victory display.`
   }
 };

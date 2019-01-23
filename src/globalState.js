@@ -1,16 +1,16 @@
 const campaigns = {};
 
-function Campaign(data = {}) {
+function Campaign(savedState = {}) {
   return Object.assign(
     {
       title: '',
       investigators: [],
-      scenario: 'The Gathering',
+      scenario: 'The Midnight Masks',
       completed: [],
-      log: [],
+      log: {},
       chaosBag: []
     },
-    data
+    savedState
   );
 }
 
