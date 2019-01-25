@@ -2,30 +2,30 @@ import * as keys from './keys';
 
 const scenarios = {
   [keys.THE_GATHERING]: {
-    intro: () => ['intro'],
-    setup: () => ['setup_1', 'setup_2', 'setup_3', 'setup_4'],
+    intro: ['intro'],
+    setup: ['setup_1', 'setup_2', 'setup_3', 'setup_4'],
     resolutions: [
-      () => [
+      [
         'no_resolution__intro',
         'no_resolution__outcome_1',
         'no_resolution__outcome_2',
         'no_resolution__outcome_3',
         'no_resolution__outcome_4'
       ],
-      () => [
+      [
         'resolution_1__intro',
         'resolution_1__outcome_1',
         'resolution_1__outcome_2',
         'resolution_1__outcome_3',
         'resolution_1__outcome_4'
       ],
-      () => [
+      [
         'resolution_2__intro',
         'resolution_2__outcome_1',
         'resolution_2__outcome_2',
         'resolution_2__outcome_3'
       ],
-      () => [
+      [
         'resolution_3__intro',
         'resolution_3__outcome_1',
         'resolution_3__outcome_2',
@@ -52,6 +52,7 @@ const scenarios = {
 
       return strings;
     },
+
     setup: ({ log, investigators }) => {
       const strings = ['setup_1', 'setup_2', 'setup_3'];
       const theGatheringLog = log[keys.THE_GATHERING];
@@ -79,17 +80,27 @@ const scenarios = {
 
       return strings;
     },
+
     resolutions: [
-      () => ['no_resolution__intro'],
-      () => [
+      ['no_resolution__intro'],
+      ({ log }) => [
         'resolution_1__intro',
         'resolution_1__outcome_1',
         'resolution_1__outcome_2',
-        // 'resolution_1__outcome_3',
-        { form: true },
+        {
+          text: 'resolution_1__outcome_3',
+          form: [
+            {
+              type: 'checkbox',
+              callback: value => {
+                console.log(log, value);
+              }
+            }
+          ]
+        },
         'resolution_1__outcome_4'
       ],
-      () => [
+      [
         'resolution_2__intro',
         'resolution_2__outcome_1',
         'resolution_2__outcome_2',

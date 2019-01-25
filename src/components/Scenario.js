@@ -3,7 +3,8 @@ import ReactMarkdown from 'react-markdown';
 
 import scenarios from '../data/scenarios';
 import strings from '../data/strings';
-import ResolutionForm from '../components/ResolutionForm';
+
+import OutcomeForm from './OutcomeForm';
 
 class Scenario extends Component {
   state = {
@@ -16,7 +17,11 @@ class Scenario extends Component {
       return;
     }
 
-    const _intro = this.state.data.intro(this.props);
+    const _intro =
+      typeof this.state.data.intro === 'function'
+        ? this.state.data.intro(this.props)
+        : this.state.data.intro;
+
     const introTxt = _intro.reduce(
       (acc, id) => (acc += `\n\r${this.state.strings[id]}`),
       ''
@@ -34,7 +39,10 @@ class Scenario extends Component {
       return;
     }
 
-    const _setup = this.state.data.setup(this.props);
+    const _setup =
+      typeof this.state.data.setup === 'function'
+        ? this.state.data.setup(this.props)
+        : this.state.data.setup;
 
     return (
       <ol className="setup">
@@ -59,7 +67,7 @@ class Scenario extends Component {
     return (
       <div className="resolutions">
         {this.state.data.resolutions.map((res, i) => {
-          const _res = res(this.props);
+          const _res = typeof res === 'function' ? res(this.props) : res;
 
           return (
             <div key={`resolution_${i}`}>
@@ -74,7 +82,10 @@ class Scenario extends Component {
                     />
                   )}
                   {typeof outcome === 'object' && outcome.form && (
-                    <ResolutionForm form={outcome.form} />
+                    <OutcomeForm
+                      strings={this.state.strings}
+                      outcome={outcome}
+                    />
                   )}
                 </li>
               ))}
